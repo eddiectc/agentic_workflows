@@ -1,0 +1,11 @@
+{
+  "name": "pi-agile-workflow",
+  "version": "1.0.0",
+  "description": "Agile workflow for agentic coding — feature specs, implementation plans, progress tracking, retrospectives",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "pi": {
+    "skills": ["./skills"],
+    "prompts": ["./prompts"]
+  }
+}
