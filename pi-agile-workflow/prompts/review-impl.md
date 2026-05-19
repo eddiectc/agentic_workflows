@@ -17,14 +17,12 @@ If a task number was given:
 
 Conduct a structured review checking:
 
+**Workflow checks** (from the skill):
 1. **Spec coverage** — Every scenario (or task's scenarios) is implemented and testable
 2. **Plan fidelity** — Tasks completed match what was planned; deviations documented in NOTES.md
-3. **Test quality** — Tests cover happy paths, error paths, and edge cases from the spec
-4. **Code conventions** — Implementation follows docs/CONVENTIONS.md and existing patterns
-5. **Edge cases** — Edge cases listed in the spec are handled
-6. **No scope creep** — Nothing outside the spec's scope was added without approval
-7. **No TODOs/debt** — No unresolved TODOs, temporary workarounds, or known issues
-8. **NOTES.md current** — All deviations and decisions are documented
-9. **DoD checklist** — All applicable items from DoD.md are satisfied
+3. **NOTES.md current** — All deviations and decisions are documented
+
+**Quality checks** (from DoD.md):
+4. Check every item in the project's DoD.md checklist
 
 Present findings as a structured report with pass/fail per category and specific actionable items. Wait for my confirmation before suggesting any fixes.

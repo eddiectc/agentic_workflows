@@ -444,35 +444,32 @@ Review the completed implementation against the spec, plan, DoD, and quality sta
 
 ### Implementation Review Checklist
 
+The skill enforces **workflow** checks; project-specific quality criteria live in DoD.md.
+
 | Category | Check |
 |---|---|
 | **Spec coverage** | Every scenario in SPEC.md is implemented and has passing tests (or only the task's scenarios in task mode) |
 | **Plan fidelity** | Completed tasks match the plan; deviations are documented in NOTES.md |
-| **Test quality** | Tests cover happy paths, error paths, and edge cases from the spec |
-| **Code conventions** | Implementation follows docs/CONVENTIONS.md and existing project patterns |
-| **Edge cases** | All edge cases listed in SPEC.md are handled |
-| **No scope creep** | Nothing outside the spec's scope was added without user approval |
-| **No technical debt** | No unresolved TODOs, temporary workarounds, or known issues |
 | **NOTES.md current** | All deviations and decisions are documented |
-| **DoD checklist** | All applicable items from DoD.md are satisfied |
+| **DoD checklist** | All items from DoD.md are satisfied (code quality, testing, conventions, etc.) |
 
 ### Review Report Format
 
 ```markdown
 ## Implementation Review: <feature name><task-specific: Task N — <task name>>
 
-### Results
+### Workflow Checks
 | Category | Status | Notes |
 |---|---|---|
 | Spec coverage | ✅ PASS / ❌ FAIL | <details> |
 | Plan fidelity | ✅ PASS / ❌ FAIL | <details> |
-| Test quality | ✅ PASS / ❌ FAIL | <details> |
-| Code conventions | ✅ PASS / ❌ FAIL | <details> |
-| Edge cases | ✅ PASS / ❌ FAIL | <details> |
-| No scope creep | ✅ PASS / ❌ FAIL | <details> |
-| No technical debt | ✅ PASS / ❌ FAIL | <details> |
 | NOTES.md current | ✅ PASS / ❌ FAIL | <details> |
-| DoD checklist | ✅ PASS / ❌ FAIL | <details> |
+
+### DoD Checklist
+| Item | Status | Notes |
+|---|---|---|
+| <DoD item 1> | ✅ PASS / ❌ FAIL | <details> |
+| <DoD item 2> | ✅ PASS / ❌ FAIL | <details> |
 
 ### Action Items
 - [ ] <specific fix needed>
