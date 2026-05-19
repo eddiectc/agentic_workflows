@@ -1,6 +1,6 @@
 ---
 name: agile-workflow
-description: Structured agile workflow for agentic coding. Use for writing BDD feature specs, implementation planning, execution, and retrospectives. Invoke when the user mentions features, specs, sprints, or planning.
+description: Structured agile workflow for agentic coding. Use for project setup, writing BDD feature specs, implementation planning, execution, and retrospectives. Covers both new and existing projects. Invoke when the user mentions features, specs, sprints, planning, or project setup.
 ---
 
 # Agile Workflow for Agentic Coding
@@ -18,16 +18,14 @@ Structured workflow where **the user decides and the agent executes**. Every pha
 ## Workflow Phases
 
 ```
-/write-spec → /review-spec → /plan-impl → implement → /review-impl → /retro
+/setup-project → /write-spec → /review-spec → /plan-impl → implement → /retro
 ```
 
 Each phase has a **gate** — the user must review and approve before moving to the next phase. Never skip a gate.
 
 ---
 
-## Prerequisite: Project Setup (`/setup-project`)
-
-> **Not a workflow phase.** Run this once to bootstrap project structure, conventions, and Definition of Done. Re-run to update conventions or DoD as the project evolves.
+## Phase 1: Project Setup (`/setup-project`)
 
 ### New Project
 
@@ -130,35 +128,7 @@ Feature IDs are sequential: f001, f002, etc.
 mkdir -p docs features
 ```
 
-5. Create `DoD.md` (Definition of Done) — propose a default checklist tailored to the project type, user customizes:
-
-**DoD.md:**
-```markdown
-# Definition of Done
-
-Checklist applied to every feature before it is declared complete.
-
-## Code Quality
-- [ ] Code follows project conventions (docs/CONVENTIONS.md)
-- [ ] No unresolved TODOs or temporary workarounds
-- [ ] No scope creep beyond the approved spec
-
-## Testing
-- [ ] All spec scenarios have passing tests
-- [ ] Tests cover happy paths, error paths, and edge cases
-- [ ] Edge cases listed in SPEC.md are handled
-
-## Documentation
-- [ ] NOTES.md documents all deviations and decisions
-- [ ] PLAN.md checkboxes reflect actual completion status
-
-## Process
-- [ ] Implementation matches the plan; deviations documented
-- [ ] Implementation reviewed via /review-impl
-- [ ] Retrospective completed via /retro
-```
-
-6. Update or create project `AGENTS.md` (or `CLAUDE.md`) with:
+5. Update or create project `AGENTS.md` (or `CLAUDE.md`) with:
 ```markdown
 # Project Conventions
 
@@ -203,12 +173,11 @@ When working on an existing project:
 
 4. Create `docs/PROJECT.md` if it doesn't exist (populate from analysis)
 5. Create `features/` directory and `features/README.md` if they don't exist
-6. Create or update `DoD.md` if it doesn't exist — propose a default checklist based on the project type
-7. Proceed to the next phase based on user's feature requests
+6. Proceed to the next phase based on user's feature requests
 
 ---
 
-## Phase 1: Feature Spec (`/write-spec <feature-name>`)
+## Phase 2: Feature Spec (`/write-spec <feature-name>`)
 
 Write an **implementation-agnostic** BDD feature spec. The spec describes **what** the system should do, not **how** to build it.
 
@@ -274,7 +243,7 @@ Before presenting the spec, verify:
 
 ---
 
-## Phase 2: Spec Review (`/review-spec <feature-name>`)
+## Phase 3: Spec Review (`/review-spec <feature-name>`)
 
 Review an existing SPEC.md for quality and completeness.
 
@@ -295,7 +264,7 @@ Review an existing SPEC.md for quality and completeness.
 
 ---
 
-## Phase 3: Implementation Plan (`/plan-impl <feature-name>`)
+## Phase 4: Implementation Plan (`/plan-impl <feature-name>`)
 
 Create an implementation plan that breaks the feature into small, end-to-end testable tasks.
 
@@ -361,7 +330,7 @@ e.g. Task 1 → Task 2 → Task 3 (Task 2 and 4 can be parallel)
 
 ---
 
-## Phase 4: Implementation
+## Phase 5: Implementation
 
 Execute the implementation plan task by task.
 
@@ -373,24 +342,12 @@ Execute the implementation plan task by task.
    - Write code following existing conventions
    - Write tests alongside or before code
    - Run tests to verify
-4. **Self-check** the completed task against the per-task quality checklist below
-5. Check off the task in PLAN.md (`- [ ]` → `- [x]`)
-6. If you deviate from the plan:
+4. Check off the task in PLAN.md (`- [ ]` → `- [x]`)
+5. If you deviate from the plan:
    - Explain why to the user
    - If the deviation is valid, update PLAN.md
    - If it should be addressed later, document in NOTES.md
-7. Move to the next task
-
-### Per-Task Self-Check (Agent runs silently, reports issues)
-
-Before checking off each task, verify:
-- [ ] Tests pass for this task
-- [ ] Code follows existing project conventions (docs/CONVENTIONS.md)
-- [ ] No TODOs or temporary workarounds left in the code
-- [ ] Corresponding spec scenario(s) are covered
-- [ ] Edge cases from the spec are handled (if applicable to this task)
-- [ ] No scope creep — nothing outside the task description was added
-- [ ] Meets applicable items from DoD.md
+6. Move to the next task
 
 ### NOTES.md Template
 
@@ -421,70 +378,7 @@ Create or append to NOTES.md as needed:
 
 ---
 
-## Phase 4b: Implementation Review (`/review-impl <feature-dir> [task-number]`)
-
-Review the completed implementation against the spec, plan, DoD, and quality standards. This is an **explicit gate** — the user triggers it when they want a comprehensive review before declaring the feature (or task) done.
-
-### Modes
-
-- **Full feature review** (`/review-impl <feature-dir>`) — review the entire feature against all criteria
-- **Task-specific review** (`/review-impl <feature-dir> <task-number>`) — review only the specified task. Still checks DoD.md items, but spec coverage and test quality are scoped to the scenarios and code for that task only
-
-### Process
-
-1. Read SPEC.md, PLAN.md, NOTES.md, DoD.md, and the actual implementation code
-2. If a task number was given:
-   - Locate the task in PLAN.md by number
-   - Identify which spec scenario(s) it corresponds to
-   - Scope the review to that task's code, tests, and scenarios
-3. Check each review criterion below
-4. Present findings as a structured pass/fail report
-5. List specific actionable items for any failures
-6. **Wait for user confirmation** before suggesting fixes
-
-### Implementation Review Checklist
-
-| Category | Check |
-|---|---|
-| **Spec coverage** | Every scenario in SPEC.md is implemented and has passing tests (or only the task's scenarios in task mode) |
-| **Plan fidelity** | Completed tasks match the plan; deviations are documented in NOTES.md |
-| **Test quality** | Tests cover happy paths, error paths, and edge cases from the spec |
-| **Code conventions** | Implementation follows docs/CONVENTIONS.md and existing project patterns |
-| **Edge cases** | All edge cases listed in SPEC.md are handled |
-| **No scope creep** | Nothing outside the spec's scope was added without user approval |
-| **No technical debt** | No unresolved TODOs, temporary workarounds, or known issues |
-| **NOTES.md current** | All deviations and decisions are documented |
-| **DoD checklist** | All applicable items from DoD.md are satisfied |
-
-### Review Report Format
-
-```markdown
-## Implementation Review: <feature name><task-specific: Task N — <task name>>
-
-### Results
-| Category | Status | Notes |
-|---|---|---|
-| Spec coverage | ✅ PASS / ❌ FAIL | <details> |
-| Plan fidelity | ✅ PASS / ❌ FAIL | <details> |
-| Test quality | ✅ PASS / ❌ FAIL | <details> |
-| Code conventions | ✅ PASS / ❌ FAIL | <details> |
-| Edge cases | ✅ PASS / ❌ FAIL | <details> |
-| No scope creep | ✅ PASS / ❌ FAIL | <details> |
-| No technical debt | ✅ PASS / ❌ FAIL | <details> |
-| NOTES.md current | ✅ PASS / ❌ FAIL | <details> |
-| DoD checklist | ✅ PASS / ❌ FAIL | <details> |
-
-### Action Items
-- [ ] <specific fix needed>
-- [ ] <another fix>
-
-### Recommendation
-<Proceed to retro / Fix issues first / Partial approval with notes>
-```
-
----
-
-## Phase 5: Retrospective (`/retro <feature-name>`)
+## Phase 6: Retrospective (`/retro <feature-name>`)
 
 After a feature is complete, conduct a retrospective.
 
@@ -551,7 +445,6 @@ When resuming work on a feature:
 
 | File | Purpose | Who Writes |
 |---|---|---|
-| `DoD.md` | Definition of Done checklist | Agent proposes, user customizes |
 | `docs/PROJECT.md` | Project goals, architecture, tech stack | Agent drafts, user approves |
 | `docs/CONVENTIONS.md` | Coding conventions | Agent drafts, user approves |
 | `features/README.md` | Feature index with status | Agent maintains |
