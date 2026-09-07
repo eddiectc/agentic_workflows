@@ -421,7 +421,7 @@ Create or append to NOTES.md as needed:
 
 ---
 
-## Phase 4b: Implementation Review (`/review-impl <feature-dir> [task-number]`)
+## Phase 4b: Implementation Review (`/review-impl <feature-dir> <task-number>`)
 
 Review the completed implementation against the spec, plan, DoD, and quality standards. This is an **explicit gate** — the user triggers it when they want a comprehensive review before declaring the feature (or task) done.
 
