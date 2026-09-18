@@ -208,7 +208,7 @@ When working on an existing project:
 
 ---
 
-## Phase 1: Feature Spec (`/write-spec <feature-name>`)
+## Feature Spec (`/write-spec <feature-name>`)
 
 Write an **implementation-agnostic** BDD feature spec. The spec describes **what** the system should do, not **how** to build it.
 
@@ -274,7 +274,7 @@ Before presenting the spec, verify:
 
 ---
 
-## Phase 2: Spec Review (`/review-spec <feature-name>`)
+## Spec Review (`/review-spec <feature-name>`)
 
 Review an existing SPEC.md for quality and completeness.
 
@@ -295,7 +295,7 @@ Review an existing SPEC.md for quality and completeness.
 
 ---
 
-## Phase 3: Implementation Plan (`/plan-impl <feature-name>`)
+## Implementation Plan (`/plan-impl <feature-name>`)
 
 Create an implementation plan that breaks the feature into small, end-to-end testable tasks.
 
@@ -361,7 +361,7 @@ e.g. Task 1 → Task 2 → Task 3 (Task 2 and 4 can be parallel)
 
 ---
 
-## Phase 4: Implementation
+## Implementation
 
 Execute the implementation plan task by task.
 
@@ -421,7 +421,7 @@ Create or append to NOTES.md as needed:
 
 ---
 
-## Phase 4b: Implementation Review (`/review-impl <feature-dir> <task-number>`)
+## Implementation Review (`/review-impl <feature-dir> <task-number>`)
 
 Review the completed implementation against the spec, plan, DoD, and quality standards. This is an **explicit gate** — the user triggers it when they want a comprehensive review before declaring the feature (or task) done.
 
@@ -481,7 +481,7 @@ The skill enforces **workflow** checks; project-specific quality criteria live i
 
 ---
 
-## Phase 5: Retrospective (`/retro <feature-name>`)
+## Retrospective (`/retro <feature-name>`)
 
 After a feature is complete, conduct a retrospective.
 

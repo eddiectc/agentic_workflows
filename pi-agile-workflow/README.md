@@ -1,17 +1,17 @@
 # pi-agile-workflow
 
-Agile workflow package for [pi](https://pi.dev) — structured feature development with BDD specs, implementation plans, progress tracking, and retrospectives. Designed for agentic coding where you decide and the agent executes.
+Agile workflow package for [maki](https://maki.sh) — structured feature development with BDD specs, implementation plans, progress tracking, and retrospectives. Designed for agentic coding where you decide and the agent executes.
 
 ## Install
 
 ```bash
-# From this directory (project-local)
-cd /path/to/your/project
-pi install git:/home/tc/sr.ht/pi_setup/pi-agile-workflow -l
+# Personal install — symlink into your maki config
+ln -sfn /path/to/pi-agile-workflow/commands ~/.config/maki/commands
+ln -sfn /path/to/pi-agile-workflow/skills/agile-workflow ~/.config/maki/skills/agile-workflow
 
-# Or copy the package files into your project
-cp -r /home/tc/sr.ht/pi_setup/pi-agile-workflow/skills/. .pi/skills/
-cp -r /home/tc/sr.ht/pi_setup/pi-agile-workflow/prompts/. .pi/prompts/
+# Or project-local — copy into your project
+cp -r /path/to/pi-agile-workflow/skills/. .maki/skills/
+cp -r /path/to/pi-agile-workflow/commands/. .maki/commands/
 ```
 
 ## Workflow
@@ -40,16 +40,17 @@ Use `/setup-project` as a prerequisite to bootstrap project structure, conventio
 
 ```
 project/
-├── .pi/
+├── .maki/
 │   ├── skills/
 │   │   └── agile-workflow/
 │   │       └── SKILL.md
-│   └── prompts/
+│   └── commands/
 │       ├── setup-project.md
 │       ├── write-spec.md
 │       ├── review-spec.md
 │       ├── plan-impl.md
 │       ├── continue.md
+│       ├── review-impl.md
 │       └── retro.md
 ├── DoD.md                  # Definition of Done checklist
 ├── docs/

@@ -2,10 +2,9 @@
 description: Review implementation against spec, plan, and DoD checklist
 argument-hint: "<feature-dir> <task-number>"
 ---
-Load the agile-workflow skill and execute Phase 4b: Implementation Review.
+Load the agile-workflow skill and execute the Implementation Review section.
 
-Feature directory: $1
-Task number: $2 — if "all", review the full feature; otherwise review only this specific task.
+Arguments: $ARGUMENTS — first word is the feature directory, second (optional) word is the task number. If no task number is given, review the full feature; otherwise review only that task.
 
 Read SPEC.md, PLAN.md, NOTES.md in the feature directory, read DoD.md at the project root, and read the actual implementation code.
 
