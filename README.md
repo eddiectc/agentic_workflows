@@ -1,4 +1,4 @@
-# pi-agile-workflow
+# agile-workflow
 
 Agile workflow package for [maki](https://maki.sh) — structured feature development with BDD specs, implementation plans, progress tracking, and retrospectives. Designed for agentic coding where you decide and the agent executes.
 
@@ -6,12 +6,12 @@ Agile workflow package for [maki](https://maki.sh) — structured feature develo
 
 ```bash
 # Personal install — symlink into your maki config
-ln -sfn /path/to/pi-agile-workflow/commands ~/.config/maki/commands
-ln -sfn /path/to/pi-agile-workflow/skills/agile-workflow ~/.config/maki/skills/agile-workflow
+ln -sfn /path/to/agile-workflow/commands ~/.config/maki/commands
+ln -sfn /path/to/agile-workflow/skills/agile-workflow ~/.config/maki/skills/agile-workflow
 
 # Or project-local — copy into your project
-cp -r /path/to/pi-agile-workflow/skills/. .maki/skills/
-cp -r /path/to/pi-agile-workflow/commands/. .maki/commands/
+cp -r /path/to/agile-workflow/skills/. .maki/skills/
+cp -r /path/to/agile-workflow/commands/. .maki/commands/
 ```
 
 ## Workflow
